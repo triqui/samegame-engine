@@ -1,0 +1,46 @@
+{
+  "name": "floodfill2d",
+  "version": "0.1.0",
+  "description": "Lightweight TypeScript flood fill utility for 2D grids.",
+  "author": "Emanuele Feronato",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "homepage": "https://triqui.github.io/floodfill2d/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/triqui/floodfill2d.git"
+  },
+  "bugs": {
+    "url": "https://github.com/triqui/floodfill2d/issues"
+  },
+  "keywords": [
+    "typescript",
+    "algorithm",
+    "flood-fill",
+    "grid",
+    "game-development"
+  ],
+
+  "scripts": {
+    "dev": "vite",
+    "demo": "vite --open /demo/",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "typescript": "~5.9.3",
+    "vite": "^8.0.0-beta.13",
+    "vitest": "^4.0.18"
+  },
+
+  "overrides": {
+    "vite": "^8.0.0-beta.13"
+  }
+}

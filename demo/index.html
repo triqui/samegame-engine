@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FloodFill2D Demo</title>
+        <style>
+
+            body {
+                font-family: system-ui;
+                background: #111;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0;
+                padding: 30px;
+            }
+
+            h1 {
+                margin-bottom: 10px;
+            }
+
+            canvas {
+                border: 1px solid #444;
+            }
+
+            .controls {
+                margin-bottom: 20px;
+                display: flex;
+                gap: 20px;
+                align-items: center;
+            }
+
+            button {
+                padding: 8px 14px;
+                border: none;
+                background: #333;
+                color: white;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background: #555;
+            }
+
+            label {
+                font-size: 14px;
+            }
+
+            .legend {
+                margin-top: 15px;
+                color: #aaa;
+                font-size: 13px;
+            }
+
+            .box {
+                width: 12px;
+                height: 12px;
+                display: inline-block;
+                margin-right: 6px;
+                border: 1px solid #333;
+            }
+
+            .empty {
+                background:#eeeeee;
+            }
+            
+            .wall {
+                background:#444;
+            }
+
+            .fill {
+                background:#4caf50;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>FloodFill2D Demo</h1>
+        <div class="controls">
+            <label> Wall % <input type="range" id="density" min="20" max="80" value="30"></label>
+            <button id="generate">Generate new walls</button>
+            <button id="clear">Clear</button>
+        </div>
+        <canvas id="canvas" width="600" height="600"></canvas>
+        <div class="legend">
+            <span><span class="box empty"></span>empty</span>
+            <span><span class="box wall"></span>wall</span>
+            <span><span class="box fill"></span>flood fill</span>   
+        </div>
+        <script type="module" src="./demo.ts"></script>
+    </body>
+</html>
