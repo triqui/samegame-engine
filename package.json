@@ -1,46 +1,38 @@
 {
-  "name": "floodfill2d",
+  "name": "samegame-engine",
   "version": "0.1.0",
-  "description": "Lightweight TypeScript flood fill utility for 2D grids.",
+  "description": "Headless SameGame engine in TypeScript with full board change tracking.",
   "author": "Emanuele Feronato",
   "license": "MIT",
   "type": "module",
   "private": true,
-  "homepage": "https://triqui.github.io/floodfill2d/",
+
   "repository": {
     "type": "git",
-    "url": "https://github.com/triqui/floodfill2d.git"
+    "url": "https://github.com/triqui/samegame-engine.git"
   },
   "bugs": {
-    "url": "https://github.com/triqui/floodfill2d/issues"
+    "url": "https://github.com/triqui/samegame-engine/issues"
   },
+
   "keywords": [
     "typescript",
-    "algorithm",
-    "flood-fill",
+    "samegame",
+    "puzzle",
     "grid",
-    "game-development"
+    "game-development",
+    "engine",
+    "flood-fill"
   ],
 
   "scripts": {
     "dev": "vite",
-    "demo": "vite --open /demo/",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "test": "vitest",
-    "test:watch": "vitest --watch",
-    "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "build": "tsc",
+    "preview": "vite preview"
   },
 
   "devDependencies": {
-    "@types/node": "^25.3.3",
     "typescript": "~5.9.3",
-    "vite": "^8.0.0-beta.13",
-    "vitest": "^4.0.18"
-  },
-
-  "overrides": {
-    "vite": "^8.0.0-beta.13"
+    "vite": "^5.0.0"
   }
 }

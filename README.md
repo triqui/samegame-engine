@@ -1,178 +1,106 @@
-# FloodFill2D
+# SameGame Engine
 
-![TypeScript](https://img.shields.io/badge/typescript-5.x-blue)
-![Tests](https://img.shields.io/badge/tests-vitest-green)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
+![license](https://img.shields.io/badge/license-MIT-blue)
+![typescript](https://img.shields.io/badge/TypeScript-5.x-blue)
+![status](https://img.shields.io/badge/status-active-brightgreen)
 
-A lightweight, fully typed **2D flood fill utility for rectangular
-grids**.
+A headless SameGame engine written in TypeScript.
 
-Ideal for:
+This library implements the core mechanics of the classic SameGame puzzle:
+remove groups of adjacent tiles with the same value, apply gravity, and compact the board.
 
--   game development (tilemaps, match‑3, regions)
--   image processing
--   grid‑based simulations
--   puzzle games
+---
 
-Features:
+## ✨ Features
 
--   4‑direction or 8‑direction connectivity
--   non‑destructive region detection
--   destructive replace mode
--   custom equality comparator
--   strict TypeScript types
--   fully tested with Vitest
+- generic tile type (T)
+- flood-fill region detection
+- 4-direction gravity (down, up, left, right)
+- normal and endless modes
+- full board change tracking:
+  - removed tiles
+  - moved tiles (gravity)
+  - shifted tiles (compaction)
+  - spawned tiles (endless mode)
+- completely headless (no rendering)
 
-------------------------------------------------------------------------
+---
 
-## Live Demo
+## 🚀 Demo
 
-https://triqui.github.io/floodfill2d/demo/
+Run the interactive examples locally:
 
-------------------------------------------------------------------------
+git clone https://github.com/triqui/samegame-engine.git
+cd samegame-engine
+npm install
+npm run dev
 
-# Installation
+---
 
-Clone the repository:
+## 📦 Usage
 
-    git clone https://github.com/yourname/floodfill2d.git
+import { SameGame } from './src/SameGame';
 
-Or copy the single source file into your project:
+const game = new SameGame<number>(
+    8,
+    8,
+    'down',
+    'normal',
+    () => Math.floor(Math.random() * 5),
+    true
+);
 
-    src/FloodFill2D.ts
+const change = game.removeRegion(0, 0);
 
-------------------------------------------------------------------------
+console.log(change);
 
-# Basic Usage
+---
 
-``` ts
-import { FloodFill2D } from "./FloodFill2D";
+## 🔄 Board Change Model
 
-const grid = [
-  [1, 1, 0],
-  [1, 0, 0],
-  [0, 0, 1]
-];
+Every move returns a full description of what happened:
 
-const flood = new FloodFill2D<number>();
+SameGameBoardChange<T>
 
-const region = flood.getConnectedRegion(grid, 0, 0);
+Includes:
 
-console.log(region);
-```
+- removed → cleared tiles
+- moved → tiles falling due to gravity
+- shifted → rows/columns compacted
+- spawned → new tiles (endless mode)
 
-Output:
+This makes the engine ideal for animations and rendering layers.
 
-    [
-      { x: 0, y: 0 },
-      { x: 1, y: 0 },
-      { x: 0, y: 1 }
-    ]
+---
 
-------------------------------------------------------------------------
+## 🧠 Design Goals
 
-# Replace Region (Destructive)
+- deterministic behavior
+- UI-agnostic (headless)
+- easy to integrate in any framework:
+  - DOM
+  - Canvas
+  - Phaser
+  - React
+- reusable core logic
 
-``` ts
-flood.replaceRegion(grid, 0, 0, 9);
-```
+---
 
-Grid becomes:
+## 📁 Project Structure
 
-    9 9 0
-    9 0 0
-    0 0 1
+src/        → engine core  
+scenes/     → interactive demos  
 
-------------------------------------------------------------------------
+---
 
-# Diagonal Connectivity
+## 🛠 Roadmap
 
-Enable 8‑direction flood fill:
+- npm package
+- performance optimizations
+- advanced solver strategies
 
-``` ts
-flood.getConnectedRegion(grid, 0, 0, {
-  allowDiagonals: true
-});
-```
+---
 
-------------------------------------------------------------------------
+## 📄 License
 
-# Custom Comparator
-
-Useful when grid cells are objects.
-
-``` ts
-type Tile = { type: string };
-
-const region = flood.getConnectedRegion(grid, 0, 0, {
-  equals: (a, b) => a.type === b.type
-});
-```
-
-------------------------------------------------------------------------
-
-# Game Development Example
-
-Typical use cases:
-
-### Match‑3 detection
-
-Find clusters of same tiles.
-
-### Tilemap region detection
-
-Detect areas of terrain.
-
-### Territory / zone filling
-
-Used in strategy or puzzle games.
-
-------------------------------------------------------------------------
-
-# API
-
-### getConnectedRegion
-
-Returns all connected cells starting from a coordinate.
-
-Non‑destructive.
-
-### replaceRegion
-
-Replaces all connected cells with a new value.
-
-Destructive operation.
-
-------------------------------------------------------------------------
-
-# Complexity
-
-Time complexity: **O(n)**\
-Memory complexity: **O(n)**
-
-Where `n` is the number of grid cells.
-
-------------------------------------------------------------------------
-
-# Requirements
-
--   rectangular grid (non jagged)
--   TypeScript 5+
--   ES modules
-
-------------------------------------------------------------------------
-
-# Running Tests
-
-Install dependencies and run the test suite:
-
-    npm install
-    npm run test
-
-The project uses **Vitest** for unit testing.
-
-------------------------------------------------------------------------
-
-# License
-
-MIT License. See the [LICENSE](LICENSE) file for details.
+MIT © Emanuele Feronato

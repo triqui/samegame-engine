@@ -14,11 +14,15 @@ node_modules
 dist
 dist-ssr
 coverage
+*.tsbuildinfo
 
 # Local environment files
 *.local
 .env
 .env.*
+
+# Cache
+.cache
 
 # Editor directories and files
 .vscode/*
