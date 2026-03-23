@@ -101,6 +101,6 @@ scenes/     → interactive demos
 
 ---
 
-## 📄 License
+# License
 
-MIT © Emanuele Feronato
+MIT License. See the [LICENSE](LICENSE) file for details.
