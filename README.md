@@ -26,14 +26,15 @@ remove groups of adjacent tiles with the same value, apply gravity, and compact 
 
 ---
 
-## 🚀 Demo
+## Demo
 
-Run the interactive examples locally:
+Live demo: https://triqui.github.io/samegame-engine/examples/scenes/
 
-git clone https://github.com/triqui/samegame-engine.git
-cd samegame-engine
-npm install
-npm run dev
+Explore all examples directly in your browser:
+- basic board
+- region detection
+- gravity
+- solver
 
 ---
 
