@@ -11,7 +11,7 @@ export default defineConfig({
         outDir: "docs",
         rollupOptions: {
             input: {
-                demo: resolve(__dirname, "examples/scenes/index.html")
+                demo: resolve(__dirname, "examples/index.html")
             }
         }
     },

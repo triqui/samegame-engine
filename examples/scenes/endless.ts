@@ -9,7 +9,7 @@ interface Tile {
 
 export function run(): void {
 
-    setDescription('Endless board<br />Tiles are replaced after removal.');
+    setDescription('Endless board.<br />Tiles are replaced after removal.');
 
     const tileTypes: Tile[] = [
         { type: 'ruby', color: '#e74c3c', points: 10 },

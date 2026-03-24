@@ -9,9 +9,9 @@ A headless SameGame engine written in TypeScript.
 This library implements the core mechanics of the classic SameGame puzzle:
 remove groups of adjacent tiles with the same value, apply gravity, and compact the board.
 
----
+------------------------------------------------------------------------
 
-## ✨ Features
+## Features
 
 - generic tile type (T)
 - flood-fill region detection
@@ -24,7 +24,7 @@ remove groups of adjacent tiles with the same value, apply gravity, and compact 
   - spawned tiles (endless mode)
 - completely headless (no rendering)
 
----
+------------------------------------------------------------------------
 
 ## Demo
 
@@ -32,14 +32,30 @@ Live demo: https://triqui.github.io/samegame-engine/examples/scenes/
 
 Explore all examples directly in your browser:
 - basic board
+- board with complex tiles
 - region detection
 - gravity
-- solver
+- board rotation
+- endless board
 
----
+------------------------------------------------------------------------
 
-## 📦 Usage
+## Installation
 
+Clone the repository:
+
+    git clone https://github.com/triqui/samegame-engine.git
+
+Or copy the source files into your project:
+
+    src/FloodFill2D.ts
+    src/SameGame.ts
+
+------------------------------------------------------------------------
+
+## Usage
+
+``` ts
 import { SameGame } from './src/SameGame';
 
 const game = new SameGame<number>(
@@ -54,10 +70,11 @@ const game = new SameGame<number>(
 const change = game.removeRegion(0, 0);
 
 console.log(change);
+```
 
----
+------------------------------------------------------------------------
 
-## 🔄 Board Change Model
+## Board Change Model
 
 Every move returns a full description of what happened:
 
@@ -72,9 +89,9 @@ Includes:
 
 This makes the engine ideal for animations and rendering layers.
 
----
+------------------------------------------------------------------------
 
-## 🧠 Design Goals
+## Design Goals
 
 - deterministic behavior
 - UI-agnostic (headless)
@@ -85,22 +102,14 @@ This makes the engine ideal for animations and rendering layers.
   - React
 - reusable core logic
 
----
+------------------------------------------------------------------------
 
-## 📁 Project Structure
+## Project Structure
 
 src/        → engine core  
-scenes/     → interactive demos  
+examples/   → interactive demos  
 
----
-
-## 🛠 Roadmap
-
-- npm package
-- performance optimizations
-- advanced solver strategies
-
----
+------------------------------------------------------------------------
 
 # License
 
