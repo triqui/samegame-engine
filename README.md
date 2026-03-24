@@ -28,7 +28,7 @@ remove groups of adjacent tiles with the same value, apply gravity, and compact 
 
 ## Demo
 
-Live demo: https://triqui.github.io/samegame-engine/examples/scenes/
+Live demo: https://triqui.github.io/samegame-engine/examples/
 
 Explore all examples directly in your browser:
 - basic board
