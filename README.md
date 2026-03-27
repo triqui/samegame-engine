@@ -55,7 +55,7 @@ Or copy the source files into your project:
 
 ## Usage
 
-``` ts
+```ts
 import { SameGame } from './src/SameGame';
 
 const game = new SameGame<number>(
@@ -91,6 +91,83 @@ This makes the engine ideal for animations and rendering layers.
 
 ------------------------------------------------------------------------
 
+## API Overview
+
+### Constructor
+
+new SameGame<T>(
+  rows,
+  cols,
+  gravity,
+  mode,
+  generator,
+  ensurePlayable?,
+  comparator?
+)
+
+---
+
+### Core Methods
+
+getGrid()
+getTile(row, col)
+setTile(row, col, value)
+randomize(generator)
+
+---
+
+### Gameplay
+
+getRegion(row, col)
+getAllRegions()
+getLargestRegion()
+removeRegion(row, col)
+hasMoves()
+
+---
+
+### Game State
+
+getBoardStats()
+
+---
+
+### Configuration
+
+setGravity(gravity, instantApply?)
+getGravity()
+
+setMode(mode)
+getMode()
+
+---
+
+### Board Manipulation
+
+rotateClockwise()
+rotateCounterClockwise()
+
+------------------------------------------------------------------------
+
+## Types
+
+### SameGameGravity
+'down' | 'up' | 'left' | 'right'
+
+### SameGameMode
+'normal' | 'endless'
+
+### SameGamePosition
+{ row, col }
+
+### SameGameBoardStats
+{ tiles, empty, regions, largestRegion }
+
+### SameGameBoardChange<T>
+{ removed, moved, shifted, spawned }
+
+------------------------------------------------------------------------
+
 ## Design Goals
 
 - deterministic behavior
@@ -111,6 +188,6 @@ examples/   → interactive demos
 
 ------------------------------------------------------------------------
 
-# License
+## License
 
 MIT License. See the [LICENSE](LICENSE) file for details.
