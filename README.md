@@ -95,50 +95,41 @@ This makes the engine ideal for animations and rendering layers.
 
 ### Constructor
 
-    new SameGame<T>(
-    rows,
-    cols,
-    gravity,
-    mode,
-    generator,
-    ensurePlayable?,
-    comparator?
-    )
+    new SameGame<T>(rows, cols, gravity, mode, generator, ensurePlayable?, comparator?)
 
 ------------------------------------------------------------------------
 
 ### Core Methods
 
-getGrid()
-getTile(row, col)
-setTile(row, col, value)
-randomize(generator)
+    getGrid()
+    getTile(row, col)
+    setTile(row, col, value)
+    randomize(generator)
 
 ------------------------------------------------------------------------
 
 ### Gameplay
 
-getRegion(row, col)
-getAllRegions()
-getLargestRegion()
-removeRegion(row, col)
-hasMoves()
+    getRegion(row, col)
+    getAllRegions()
+    getLargestRegion()
+    removeRegion(row, col)
+    hasMoves()
 
 ------------------------------------------------------------------------
 
 ### Game State
 
-getBoardStats()
+    getBoardStats()
 
 ------------------------------------------------------------------------
 
 ### Configuration
 
-setGravity(gravity, instantApply?)
-getGravity()
-
-setMode(mode)
-getMode()
+    setGravity(gravity, instantApply?)
+    getGravity()
+    setMode(mode)
+    getMode()
 
 ------------------------------------------------------------------------
 
@@ -152,19 +143,19 @@ getMode()
 ## Types
 
 ### SameGameGravity
-'down' | 'up' | 'left' | 'right'
+    'down' | 'up' | 'left' | 'right'
 
 ### SameGameMode
-'normal' | 'endless'
+    'normal' | 'endless'
 
 ### SameGamePosition
-{ row, col }
+    { row, col }
 
 ### SameGameBoardStats
-{ tiles, empty, regions, largestRegion }
+    { tiles, empty, regions, largestRegion }
 
-### SameGameBoardChange<T>
-{ removed, moved, shifted, spawned }
+    ### SameGameBoardChange<T>
+    { removed, moved, shifted, spawned }
 
 ------------------------------------------------------------------------
 
