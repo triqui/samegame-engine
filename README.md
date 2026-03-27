@@ -95,17 +95,17 @@ This makes the engine ideal for animations and rendering layers.
 
 ### Constructor
 
-new SameGame<T>(
-  rows,
-  cols,
-  gravity,
-  mode,
-  generator,
-  ensurePlayable?,
-  comparator?
-)
+    new SameGame<T>(
+    rows,
+    cols,
+    gravity,
+    mode,
+    generator,
+    ensurePlayable?,
+    comparator?
+    )
 
----
+------------------------------------------------------------------------
 
 ### Core Methods
 
@@ -114,7 +114,7 @@ getTile(row, col)
 setTile(row, col, value)
 randomize(generator)
 
----
+------------------------------------------------------------------------
 
 ### Gameplay
 
@@ -124,13 +124,13 @@ getLargestRegion()
 removeRegion(row, col)
 hasMoves()
 
----
+------------------------------------------------------------------------
 
 ### Game State
 
 getBoardStats()
 
----
+------------------------------------------------------------------------
 
 ### Configuration
 
@@ -140,12 +140,12 @@ getGravity()
 setMode(mode)
 getMode()
 
----
+------------------------------------------------------------------------
 
 ### Board Manipulation
 
-rotateClockwise()
-rotateCounterClockwise()
+    rotateClockwise()
+    rotateCounterClockwise()
 
 ------------------------------------------------------------------------
 
