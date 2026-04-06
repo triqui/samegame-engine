@@ -66,7 +66,10 @@ export interface SameGameBoardStats {
     * spawned: new tiles generated (endless mode)
 */
 export interface SameGameBoardChange<T> {
-    removed: SameGamePosition[];
+    removed: {
+        at: SameGamePosition;
+        value: T;
+    }[];
     moved: {
         from: SameGamePosition;
         to: SameGamePosition;
@@ -183,6 +186,9 @@ export class SameGame<T> {
     * @returns list of cells belonging to the same region
     */
     public getRegion(row: number, col: number): SameGamePosition[] {
+        if (!this.isInside(row, col)) {
+            return [];
+        }
         const value: T | null = this.grid[row][col];
         if (value === null) {
             return [];
@@ -345,7 +351,15 @@ export class SameGame<T> {
         if (region.length < 2) {
             return { removed: [], moved: [], shifted: [], spawned: [] };
         }
+        const removed: SameGameBoardChange<T>['removed'] = [];
         for (const cell of region) {
+            const value: T | null = this.grid[cell.row][cell.col];
+            if (value !== null) {
+                removed.push({
+                    at: cell,
+                    value: value
+                });
+            }
             this.grid[cell.row][cell.col] = null;
         }
         const moved = this.applyGravity();  
@@ -357,7 +371,7 @@ export class SameGame<T> {
         if (this.mode === 'endless') {
             spawned = this.refill();
         }
-        return { removed: region, moved, shifted, spawned };
+        return { removed, moved, shifted, spawned };
     }
 
     /**
@@ -391,6 +405,34 @@ export class SameGame<T> {
     */
     public getTile(row: number, col: number): T | null {
         return this.isInside(row, col) ? this.grid[row][col] : null;
+    }
+
+    /**
+        * returns all non-empty tiles currently present on the board
+        *
+        * this method scans the entire grid and collects every tile
+        * whose value is not null.
+        *
+        * the returned array contains the tile values (T) as stored
+        * in the grid, preserving their current state.
+        *
+        * note:
+        * - empty cells (null) are ignored
+        * - the order is row-major (top to bottom, left to right)
+        *
+        * @returns array of all active tiles on the board
+    */
+    public getAllTiles(): T[] {
+        const tiles: T[] = [];
+        for (let row: number = 0; row < this.rows; row++) {
+            for (let col: number = 0; col < this.cols; col++) {
+                const value: T | null = this.grid[row][col];
+                if (value !== null) {
+                    tiles.push(value);
+                }
+            }
+        }
+        return tiles;
     }
 
     /**
