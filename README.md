@@ -40,6 +40,36 @@ Explore all examples directly in your browser:
 
 ------------------------------------------------------------------------
 
+## Real-World Examples
+
+Two complete games built on this engine. Same engine, unchanged: only the rendering layer was rewritten.
+
+### SameGame — Phaser 4
+
+Play it: https://triqui.itch.io/samegame
+
+A full SameGame with levels, scoring and high-resolution art.
+The engine handles the board logic and returns the list of changes; Phaser 4 turns them into tweens.
+
+- Built with **Phaser 4**, **TypeScript** and **Vite**
+- Full source code available on the itch.io page
+- Tutorial: [Phaser 4 HTML5 SameGame powered by SameGame Engine](https://emanueleferonato.com/2026/04/09/phaser-4-html5-samegame-powered-by-samegame-engine-a-headless-typescript-class/)
+
+### SameGame — NacatamalOn
+
+Play it: https://triqui.itch.io/samegamenaca
+
+The same game with a 1997 console look, built with [NacatamalOn](https://nacatamalon.com/), a 2D/3D web engine (WebGPU with WebGL2 fallback) inspired by consoles from the SNES to the GameCube.
+Features palette reduction, ordered dithering and a CRT effect, and every graphic asset is painted in code: no image files at all.
+
+- Built with **NacatamalOn**, **TypeScript** and **Vite**
+- Full source code available on the itch.io page
+- Tutorial: [NacatamalOn HTML5 SameGame powered by SameGame Engine](https://emanueleferonato.com/2026/10/20/nacatamalon-html5-samegame-powered-by-samegame-engine-a-headless-typescript-class/)
+
+Play both and compare: two very different renderers driven by the exact same engine.
+
+------------------------------------------------------------------------
+
 ## Installation
 
 Clone the repository:
@@ -154,7 +184,7 @@ This makes the engine ideal for animations and rendering layers.
 ### SameGameBoardStats
     { tiles, empty, regions, largestRegion }
 
-    ### SameGameBoardChange<T>
+### SameGameBoardChange<T>
     { removed, moved, shifted, spawned }
 
 ------------------------------------------------------------------------
@@ -167,6 +197,7 @@ This makes the engine ideal for animations and rendering layers.
   - DOM
   - Canvas
   - Phaser
+  - NacatamalOn
   - React
 - reusable core logic
 
