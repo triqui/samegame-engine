@@ -35,6 +35,8 @@ npx tsc               typecheck src/ and examples/
 npm run build         typecheck, then build the demo into docs/
 ```
 
+Requires Node.js 20.19+ or 22.12+ (Vite 8).
+
 There is no test suite. To verify a change, run `npx tsc`, then exercise the engine
 with a small script or through the examples (`npm run dev`). Run `npm run build` and commit
 `docs/` only when the published demo should change.

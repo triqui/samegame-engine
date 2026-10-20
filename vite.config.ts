@@ -9,9 +9,9 @@ export default defineConfig({
 
     build: {
         outDir: "docs",
-        rollupOptions: {
+        rolldownOptions: {
             input: {
-                demo: resolve(__dirname, "examples/index.html")
+                demo: resolve(import.meta.dirname, "examples/index.html")
             }
         }
     },

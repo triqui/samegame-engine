@@ -81,7 +81,7 @@ Or copy the source files into your project:
     src/FloodFill2D.ts
     src/SameGame.ts
 
-To run the examples locally:
+To run the examples locally (Node.js 20.19+ or 22.12+):
 
     npm install
     npm run dev
