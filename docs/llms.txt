@@ -1,0 +1,33 @@
+# SameGame Engine
+
+> Headless SameGame engine in TypeScript: generic tile type, flood-fill region detection, 4-direction gravity, normal and endless modes. Every move returns a full description of the board changes (removed, moved, shifted, spawned), so any renderer (DOM, Canvas, Phaser, NacatamalOn, React) can animate it. No rendering code, no runtime dependencies; distributed as two source files to copy into a project.
+
+Key facts for integration:
+
+- Positions are `{ row, col }`, row 0 at the top. `getGrid()` returns the live `grid[row][col]` array (`null` = empty cell); read it, don't mutate it.
+- `removeRegion(row, col)` returns `{ removed, moved, shifted, spawned }`. Regions smaller than 2 tiles return four empty arrays and leave the board unchanged.
+- Apply the four phases in order. `moved.from` is the position after removal, `shifted.from` the position after gravity; a tile can appear in both `moved` and `shifted`.
+- `shifted` only happens in normal mode, `spawned` only in endless mode.
+- With object tiles, pass a comparator that handles `null`: `(a, b) => a !== null && b !== null && a.type === b.type`.
+- `setTile`, `randomize`, `rotateClockwise`, `rotateCounterClockwise` and `setGravity(g, true)` return nothing: resync the renderer from `getGrid()` after calling them.
+
+## Docs
+
+- [README](https://raw.githubusercontent.com/triqui/samegame-engine/main/README.md): features, installation, usage and API overview
+- [AGENTS.md](https://raw.githubusercontent.com/triqui/samegame-engine/main/AGENTS.md): exact engine semantics, change model, integration pattern and contribution rules
+
+## Source
+
+- [src/SameGame.ts](https://raw.githubusercontent.com/triqui/samegame-engine/main/src/SameGame.ts): the engine and all public types
+- [src/FloodFill2D.ts](https://raw.githubusercontent.com/triqui/samegame-engine/main/src/FloodFill2D.ts): flood fill used for region detection
+
+## Examples
+
+- [Live demos](https://triqui.github.io/samegame-engine/examples/): basic board, complex tiles, regions, gravity, rotation, endless mode
+- [Phaser 4 tutorial](https://emanueleferonato.com/2026/04/09/phaser-4-html5-samegame-powered-by-samegame-engine-a-headless-typescript-class/): complete game built on the engine, playable at https://triqui.itch.io/samegame
+- [NacatamalOn tutorial](https://emanueleferonato.com/2026/10/20/nacatamalon-html5-samegame-powered-by-samegame-engine-a-headless-typescript-class/): the same game with a different renderer, playable at https://triqui.itch.io/samegamenaca
+
+## Optional
+
+- [Repository](https://github.com/triqui/samegame-engine)
+- [Example scenes source](https://github.com/triqui/samegame-engine/tree/main/examples/scenes)
