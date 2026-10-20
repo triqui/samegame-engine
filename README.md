@@ -81,6 +81,11 @@ Or copy the source files into your project:
     src/FloodFill2D.ts
     src/SameGame.ts
 
+To run the examples locally:
+
+    npm install
+    npm run dev
+
 ------------------------------------------------------------------------
 
 ## Usage
@@ -119,6 +124,9 @@ Includes:
 
 This makes the engine ideal for animations and rendering layers.
 
+The phases happen in this order, each starting from the board left by the previous one,
+so animate them in sequence: a tile can first fall (moved) and then slide with its column (shifted).
+
 ------------------------------------------------------------------------
 
 ## API Overview
@@ -133,8 +141,10 @@ This makes the engine ideal for animations and rendering layers.
 
     getGrid()
     getTile(row, col)
+    getAllTiles()
     setTile(row, col, value)
     randomize(generator)
+    generatePlayableBoard(generator)
 
 ------------------------------------------------------------------------
 
@@ -207,6 +217,25 @@ This makes the engine ideal for animations and rendering layers.
 
 src/        → engine core  
 examples/   → interactive demos  
+docs/       → built demos, served by GitHub Pages  
+public/     → static files copied into docs/ at build time  
+
+------------------------------------------------------------------------
+
+## For AI Agents
+
+The repository includes files that help AI coding agents work on the engine
+or integrate it into a game:
+
+- [AGENTS.md](AGENTS.md): project layout, commands, contribution rules, exact engine
+  semantics (change model ordering, comparator, coordinate conventions) and the
+  recommended renderer integration pattern. Read automatically by agents that
+  support the AGENTS.md convention.
+- [CLAUDE.md](CLAUDE.md): imports AGENTS.md for Claude Code.
+- [llms.txt](https://triqui.github.io/samegame-engine/llms.txt): a short, LLM-friendly
+  index of the documentation, source files and examples.
+
+If you ask an assistant to add this engine to your project, point it to AGENTS.md or llms.txt.
 
 ------------------------------------------------------------------------
 
