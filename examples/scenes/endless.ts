@@ -76,11 +76,11 @@ function renderBoard(game: SameGame<Tile>, container: HTMLElement): void {
                 let logString: string = '';
                 if (change.removed.length > 0) {
                     logString += '<div><strong>Removed</strong></div><div>';
-                    change.removed.forEach((removed: SameGamePosition, index: number) => {
+                    change.removed.forEach((removed: { at: SameGamePosition, value: Tile }, index: number) => {
                         if (index > 0) {
                             logString += '; ';
                         }
-                        logString += `(${removed.row}, ${removed.col})`;
+                        logString += `(${removed.at.row}, ${removed.at.col})`;
                     })    
                     logString += '</div>';
                 }
